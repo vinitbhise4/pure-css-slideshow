@@ -1,0 +1,63 @@
+*{margin:0; padding:0; box-sizing:border-box; -webkit-box-sizing:border-box;}
+html, body{height:100%;}
+body{margin:0; padding:0; font-size:14px; font-family: Arial, Helvetica, sans-serif; font-weight:400; background:#fbfbfb;}
+
+#pageMain-id{display:flex; justify-content:center; align-items:center; height:100%;}
+
+.imageSliderM{position:relative; overflow:hidden; border-radius:10px; width:600px; height:300px; color:#fff; text-align:center;}
+.imageSliderM .slideItemsM h2{font-weight:400; font-size:45px; margin-bottom:12px;}
+.imageSliderM a{border-radius:50%; margin:0 3px; color:rgba(0, 0, 0, 0.8); text-decoration:none;}
+
+.imageSliderM .slideItemsM{height:100%; white-space:nowrap; font-size:0; transition:0.8s;}
+
+.imageSliderM .slideItemsM > *{font-size:14px; display:inline-flex; align-items:center; flex-direction:column; justify-content:center; white-space:normal; vertical-align:top; height:100%; width:100%;}
+.imageSliderM .slideItemsM div:nth-child(1){background:#f2709c; background:-webkit-linear-gradient(to top, #ff9472, #f2709c); background:linear-gradient(to top, #ff9472, #f2709c);}
+.imageSliderM .slideItemsM div:nth-child(2){background:#4b6cb7; background:-webkit-linear-gradient(to top, #182848, #4b6cb7); background:linear-gradient(to top, #182848, #4b6cb7);}
+.imageSliderM .slideItemsM div:nth-child(3){background:#1D976C; background:-webkit-linear-gradient(to top, #93F9B9, #1D976C); background:linear-gradient(to top, #93F9B9, #1D976C);}
+.imageSliderM .slideItemsM div:nth-child(4){background:#4776E6; background:-webkit-linear-gradient(to top, #8E54E9, #4776E6); background:linear-gradient(to top, #8E54E9, #4776E6);}
+.imageSliderM .slideItemsM div:nth-child(5){background:#3D7EAA; background:-webkit-linear-gradient(to bottom, #FFE47A, #3D7EAA); background:linear-gradient(to bottom, #FFE47A, #3D7EAA);}
+.imageSliderM h3{font-size:40px; font-weight:400;}
+
+/* PREV and NEXT */
+.imageSliderM .prevNextBtnM{position:absolute; z-index:1; top:50%; width:100%; height:0;}
+.imageSliderM .prevNextBtnM > div + div{visibility:hidden;}
+.imageSliderM .prevNextBtnM a{background:#fff;display:flex; justify-content:center; align-items:center; position:absolute; width:40px; height:40px; line-height:40px; /* If you want to place numbers */ text-align:center; opacity:0.7; -webkit-transition:0.3s; transition:0.3s; -webkit-transform:translateY(-50%); transform:translateY(-50%); left:0;}
+.imageSliderM .prevNextBtnM a:hover{opacity:1;}
+.imageSliderM .prevNextBtnM a + a{left:auto; right:0;}
+.prevNextBtnM div a:first-child:after{-moz-transform: rotate(135deg); -ms-transform: rotate(135deg); -webkit-transform: rotate(135deg); transform: rotate(135deg);}
+.prevNextBtnM div a:last-child:after {-moz-transform: rotate(315deg); -ms-transform: rotate(315deg); -webkit-transform: rotate(315deg); transform: rotate(315deg);}
+.prevNextBtnM div a::after{content:""; border-bottom-style:solid; border-bottom-width:2px; border-right-style:solid; border-right-width:2px; border-color:#000; display:inline-block; height:8px; width:8px;}
+
+/* Slider Dot */
+.imageSliderM .sliderDot{position:absolute; z-index:2; bottom:0; padding:10px 0; width:100%; text-align:center;}
+.imageSliderM .sliderDot > a{display:inline-block; width:12px; height:12px; line-height:normal; font-size:0; text-decoration:none; text-align:center; background:rgba(255, 255, 255, 1); -webkit-transition:0.3s; transition:0.3s;}
+.imageSliderM .sliderDot > a + a{background:rgba(255, 255, 255, 0.5); /* Dim all but first */}
+.imageSliderM .sliderDot > a:hover{background:rgba(255, 255, 255, 0.7) !important;}
+
+.imageSliderM >span:target ~ .sliderDot >* {background:rgba(255, 255, 255, 0.5);}
+#slideOne:target ~ .sliderDot >*:nth-child(1){background:rgba(255, 255, 255, 1);}
+#slideTwo:target ~ .sliderDot >*:nth-child(2){background:rgba(255, 255, 255, 1);}
+#slideThree:target ~ .sliderDot >*:nth-child(3){background:rgba(255, 255, 255, 1);}
+#slideFour:target ~ .sliderDot >*:nth-child(4){background:rgba(255, 255, 255, 1);}
+#slideFive:target ~ .sliderDot >*:nth-child(5){background:rgba(255, 255, 255, 1);}
+
+.imageSliderM > span:target ~ .prevNextBtnM > *{visibility:hidden;}
+#slideOne:target ~ .prevNextBtnM >*:nth-child(1){visibility:visible;}
+#slideTwo:target ~ .prevNextBtnM >*:nth-child(2){visibility:visible;}
+#slideThree:target ~ .prevNextBtnM >*:nth-child(3){visibility:visible;}
+#slideFour:target ~ .prevNextBtnM >*:nth-child(4){visibility:visible;}
+#slideFive:target ~ .prevNextBtnM >*:nth-child(5){visibility:visible;}
+
+/* Slider animation positions */
+#slideOne:target ~ .slideItemsM{transform:translateX(0%); -webkit-transform:translateX(0%);}
+#slideTwo:target ~ .slideItemsM{transform:translateX(-100%); -webkit-transform:translateX(-100%);}
+#slideThree:target ~ .slideItemsM{transform:translateX(-200%); -webkit-transform:translateX(-200%);}
+#slideFour:target ~ .slideItemsM{transform:translateX(-300%); -webkit-transform:translateX(-300%);}
+#slideFive:target ~ .slideItemsM{transform:translateX(-400%); -webkit-transform:translateX(-400%);}
+
+@media (max-width: 768px){
+#pageMain-id{align-items:flex-start; height:100%; margin:50px 15px 10px;}
+.imageSliderM .slideItemsM h2{font-size:24px;}
+.imageSliderM .slideItemsM > *{font-size:13px;}
+
+}
